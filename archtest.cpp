@@ -35,8 +35,8 @@ extern void archtest(char *pFilename, const uint8_t u8Len, uint8_t *pString) {
         info = (char*) "unknown";
     }
     uint8_t stream[64];
-    int len = sprintf((char*)stream, "Machine: 0x%.4x, %s\n", machine, info);
-    if(len<=u8Len){
-        strncpy((char*)pString, (char*)stream, len);
+    int len = sprintf((char*)stream, "Machine: 0x%.4x, %s", machine, info);
+    if(len>0&&len<=u8Len){
+        strncpy((char*)pString, (char*)stream, len+1);
     }
 }
