@@ -2,6 +2,8 @@
 #include "archtest.h"
 #include <QtWidgets>
 
+#define _ITERATOR_DEBUG_LEVEL 0
+
 int main(int argc, char *argv[]){
 
     QApplication app(argc, argv);

@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define BUFFER_SIZE 64
+
 extern void archtest(char *pFilename, const uint8_t u8Len, uint8_t *pString) {
     FILE *f = fopen(pFilename, "rb");
     uint32_t offset = 0;
@@ -34,8 +36,8 @@ extern void archtest(char *pFilename, const uint8_t u8Len, uint8_t *pString) {
     default:
         info = (char*) "unknown";
     }
-    uint8_t stream[64];
-    int len = sprintf((char*)stream, "Machine: 0x%.4x, %s", machine, info);
+    uint8_t stream[BUFFER_SIZE];
+    int len = sprintf_s((char*)stream, BUFFER_SIZE, "Machine: 0x%.4x, %s", machine, info);
     if(len>0&&len<=u8Len){
         strncpy((char*)pString, (char*)stream, len+1);
     }
